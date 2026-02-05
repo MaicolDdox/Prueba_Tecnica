@@ -3,7 +3,9 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite"
+        "dev": "vite",
+        "build": "vite build",
+        "vercel-build": "composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress && npm run build"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.11",
