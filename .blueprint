@@ -1,0 +1,20 @@
+created:
+    - app/Http/Controllers/Admin/VehicleController.php
+    - database/factories/PersonFactory.php
+    - database/factories/VehicleFactory.php
+    - database/migrations/2026_02_05_001117_create_people_table.php
+    - database/migrations/2026_02_05_001118_create_vehicles_table.php
+    - app/Models/Person.php
+    - app/Models/Vehicle.php
+    - tests/Feature/Http/Controllers/Admin/VehicleControllerTest.php
+    - app/Http/Requests/Admin/VehicleStoreRequest.php
+    - app/Http/Requests/Admin/VehicleUpdateRequest.php
+    - resources/views/vehicle/index.blade.php
+    - resources/views/vehicle/create.blade.php
+    - resources/views/vehicle/show.blade.php
+    - resources/views/vehicle/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Person: { meta: { table: people }, document_number: 'string:20 unique', first_name: 'string:60', middle_name: 'string:60 nullable', last_name: 'string:80', address: 'string:120 nullable', phone: 'string:20 nullable', city: 'string:60 nullable', type: 'enum:conductor,propietario index', relationships: { hasMany: 'Vehicle:owner, Vehicle:driver' } }
+    Vehicle: { plate: 'string:20 unique', color: 'string:30', brand: 'string:50', vehicle_type: 'enum:particular,publico index', owner_id: 'id foreign:people index', driver_id: 'id foreign:people index', relationships: { belongsTo: 'Person:owner, Person:driver' } }
